@@ -1,3 +1,14 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#canvas {
+    border: 2px solid #000; /* (opcional) borda para visualização */
+}
 canvas {
     cursor: default;
     outline: none;
