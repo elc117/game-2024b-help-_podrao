@@ -21,11 +21,11 @@ public class Paradigmas_Game extends ApplicationAdapter {
     private Texture image, tNave, tMissile, tEnemy;
     private Sprite nave, missile;
     private float posX, posY, xMissile, yMissile;
-    private final int velocity = 5;
+    private final int velocity = 3;
     private boolean atack, gameOver, win;
     private long lastEnemyTime;
-    private float enemySpawnInterval = 1.0f; // Intervalo inicial entre spawns (em segundos)
-    private float timeSinceLastSpawn = 0.0f; // Tempo acumulado desde o último spawn
+    private float enemySpawnInterval = 1.0f; 
+    private float timeSinceLastSpawn = 0.0f; 
     private Array<Enemy> enemies;
     private int score, numQuestions;
     private int power;
@@ -46,7 +46,7 @@ public class Paradigmas_Game extends ApplicationAdapter {
         yMissile = posY;
         win = false;
         atack = false;
-        numQuestions = 3;
+        numQuestions = 10;
         gameOver = false;
         tMissile = new Texture("missile.png");
         missile = new Sprite(tMissile);
@@ -60,12 +60,19 @@ public class Paradigmas_Game extends ApplicationAdapter {
         bitmap = new BitmapFont();
         bitmap.setColor(Color.WHITE);
 
-        // Criando as perguntas e respostas
         questions = new ArrayList<>();
-        questions.add(new Question("Qual é a capital do Brasil?", new String[]{"Brasília", "Rio de Janeiro", "São Paulo", "Belo Horizonte"}, 0));
-        questions.add(new Question("Quanto é 2 + 2?", new String[]{"3", "4", "5", "6"}, 1));
-        questions.add(new Question("Qual a cor do céu?", new String[]{"Azul", "Verde", "Amarelo", "Vermelho"}, 0));
-        questions.add(new Question(" ", new String[]{" ", " ", " ", " "}, 0));
+        questions.add(new Question("1- Em que ano foi fundada a UFSM?", new String[]{"1950", "1960", "1961", "1965"}, 2));
+        questions.add(new Question("2- Onde está localizado o campus principal da UFSM?", new String[]{"Porto Alegre", "Marte", "Santa Maria", "Russia"}, 2));
+        questions.add(new Question("3- Qual o nome do mascote visto perambulando pela UFSM?", new String[]{"Cachorro", "Fedorento", "Podrao", "Auau"}, 2));
+        questions.add(new Question("4- Qual a melhor proteína do RU?", new String[]{"Salsichao", "Fricassê", "Bife Acebolado", "Guizado"}, 0));
+        questions.add(new Question("5- Qual o nome da Atlética dos Cursos de Tecnologia?", new String[]{"Indomáveis", "Java", "Tirana", "Anarquíca"},1));
+        questions.add(new Question("6- Qual o point das sextas dos alunos da UFSM?", new String[]{"Container", "Estudar1", "Estudar2", "Estudar3"}, 0));
+        questions.add(new Question("7- Qual o nome do monumento que Podrao está travando sua batalha?", new String[]{"Bosque", "Incubadora", "CT", "Planetário"}, 3));
+        questions.add(new Question("8- Qual bairro abriga o campus da UFSM em Santa Maria?", new String[]{"Medianeira", "Dores", "Camobi", "Centro"}, 2));
+        questions.add(new Question("9- Qual prédio abriga os cursos de Tecnologia?", new String[]{"CT", "CAL", "CCNE", "HUSM"}, 0));
+        questions.add(new Question("10- Onde era comemorada a famosa calourada?", new String[]{"Gare", "Brahma", "CT", "Liverpool"}, 1));
+        questions.add(new Question(" ", new String[]{" "," "," "," "}, 0));
+
 
         currentQuestionIndex = 0;
         spawnEnemiesForCurrentQuestion();
@@ -80,10 +87,9 @@ public class Paradigmas_Game extends ApplicationAdapter {
 
     timeSinceLastSpawn += deltaTime;
 
-    // Checa se é hora de spawnar um novo inimigo
     if (timeSinceLastSpawn >= enemySpawnInterval && !gameOver) {
         spawnEnemy();
-        timeSinceLastSpawn = 0; // Reseta o temporizador
+        timeSinceLastSpawn = 0; 
     }
 
     ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
@@ -98,18 +104,17 @@ public class Paradigmas_Game extends ApplicationAdapter {
         for (Enemy enemy : enemies) {
             batch.draw(tEnemy, enemy.rectangle.x, enemy.rectangle.y);
 
-            // Desenhando o texto das respostas com fonte maior
             float textX = enemy.rectangle.x + 10;
             float textY = enemy.rectangle.y + tEnemy.getHeight() + 20;
 
-            bitmap.getData().setScale(2.0f); // Aumenta o tamanho da fonte para as respostas
+            bitmap.getData().setScale(2.0f); 
 
             bitmap.setColor(Color.BLACK);
-            bitmap.draw(batch, enemy.text, textX + 1, textY - 1); // Sombra preta
+            bitmap.draw(batch, enemy.text, textX + 1, textY - 1); 
             bitmap.setColor(Color.WHITE);
-            bitmap.draw(batch, enemy.text, textX, textY); // Texto branco
+            bitmap.draw(batch, enemy.text, textX, textY); 
 
-            bitmap.getData().setScale(1.0f); // Volta ao tamanho original após desenhar
+            bitmap.getData().setScale(1.0f); 
         }
 
         bitmap.getData().setScale(2.0f);
@@ -119,6 +124,7 @@ public class Paradigmas_Game extends ApplicationAdapter {
     } else {
         if (win) {
             bitmap.draw(batch, "YOU WIN", Gdx.graphics.getWidth() / 2 - 100, Gdx.graphics.getHeight() / 2);
+            bitmap.draw(batch, "SCORE: " + score, Gdx.graphics.getWidth() / 2 - 100, Gdx.graphics.getHeight() / 2 + 30);
         } else {
             bitmap.draw(batch, "GAME OVER", Gdx.graphics.getWidth() / 2 - 100, Gdx.graphics.getHeight() / 2);
         }
@@ -164,7 +170,7 @@ public class Paradigmas_Game extends ApplicationAdapter {
 
         if (atack) {
             if (xMissile < Gdx.graphics.getWidth()) {
-                xMissile += 20;
+                xMissile += 10;
             } else {
                 xMissile = posX + nave.getWidth() / 2;
                 atack = false;
@@ -178,7 +184,6 @@ public class Paradigmas_Game extends ApplicationAdapter {
     private void spawnEnemiesForCurrentQuestion() {
         Question currentQuestion = questions.get(currentQuestionIndex);
 
-    // Seleciona uma resposta aleatória para o inimigo
     int answerIndex = MathUtils.random(currentQuestion.answers.length - 1);
 
     float yPosition = MathUtils.random(50, Gdx.graphics.getHeight() - 50);
@@ -194,19 +199,19 @@ public class Paradigmas_Game extends ApplicationAdapter {
 
 private void moveEnemies() {
     boolean allEnemiesOut = true;
-    boolean correctHit = false; // Sinalizador para verificar acerto correto
+    boolean correctHit = false; 
 
     for (Iterator<Enemy> iter = enemies.iterator(); iter.hasNext(); ) {
         Enemy enemy = iter.next();
         enemy.rectangle.x -= 400 * Gdx.graphics.getDeltaTime();
 
-        // Colisão com o míssil
         if (collide(enemy.rectangle.x, enemy.rectangle.y, enemy.rectangle.width, enemy.rectangle.height, xMissile, yMissile, missile.getWidth(), missile.getHeight()) && atack) {
             if (enemy.isCorrect) {
                 score++;
-                correctHit = true; // Marca que a resposta correta foi atingida
+                correctHit = true; 
             } else {
                 power--;
+                score--;
                 if (power <= 0) {
                     gameOver = true;
                 }
@@ -222,19 +227,17 @@ private void moveEnemies() {
         }
     }
 
-    // Se a resposta correta foi atingida, avança para a próxima pergunta
     if (correctHit) {
         currentQuestionIndex = currentQuestionIndex + 1;
         if (currentQuestionIndex >= numQuestions) {
             enemies.clear();
-            win = true; // Define vitória quando todas as perguntas forem respondidas
-            gameOver = true; // Termina o jogo
+            win = true; 
+            gameOver = true; 
         }
-        enemies.clear(); // Agora pode limpar a lista sem problemas
+        enemies.clear(); 
         spawnEnemiesForCurrentQuestion();
     }
 
-    // Caso todos os inimigos saiam da tela, continua spawnando
     if (allEnemiesOut && !gameOver) {
         spawnEnemy();
     }
@@ -259,8 +262,7 @@ private void moveEnemies() {
 
     private void spawnEnemy() {
         Question currentQuestion = questions.get(currentQuestionIndex);
-    
-        // Seleciona uma resposta aleatória para o inimigo
+
         int answerIndex = MathUtils.random(currentQuestion.answers.length - 1);
     
         float yPosition = MathUtils.random(50, Gdx.graphics.getHeight() - 50);
