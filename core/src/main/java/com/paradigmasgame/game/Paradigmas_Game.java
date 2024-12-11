@@ -170,7 +170,7 @@ public class Paradigmas_Game extends ApplicationAdapter {
 
         if (atack) {
             if (xMissile < Gdx.graphics.getWidth()) {
-                xMissile += 20;
+                xMissile += 10;
             } else {
                 xMissile = posX + nave.getWidth() / 2;
                 atack = false;
