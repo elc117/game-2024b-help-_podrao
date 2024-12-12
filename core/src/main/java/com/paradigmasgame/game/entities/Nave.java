@@ -77,6 +77,10 @@ public class Nave {
         sprite.setPosition(x, y);
     }
 
+    public void setPosition(float x, float y){
+        sprite.setPosition(x, y);
+    }
+
     public void moveLeft() {
         sprite.translateX(-5);
     }
