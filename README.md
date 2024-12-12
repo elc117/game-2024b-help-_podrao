@@ -1,36 +1,36 @@
-# Paradigmas_Game
+# Help!_Podrao | Arthur Bogacki Verissimo & João Pedro Righi
 
-A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
+Help!_Podrao é um jogo desenvolvido com a biblioteca LibGDX, onde o jogador controla o mascote da UFSM Podrao, o jogo consiste em um quizz de perguntas e respostas onde o nosso herói Podrão deve acertar um míssel na resposta correta
 
-This project was generated with a template including simple application launchers and an `ApplicationAdapter` extension that draws libGDX logo.
+## Funcionalidades
 
-## Platforms
+- **Movimento do Podrao**: O jogador pode mover o Podrao em várias direções usando as teclas de seta.
+- **Disparo de Mísseis**: O jogador pode disparar mísseis para responder as questões da tela usando a tecla "Space"
+- **Inimigos**: Inimigos aparecem aleatoriamente na tela e se movem em direção à nave com uma possível resposta.
+- **Pontuação**: A pontuação aumenta cada vez que o jogador destrói um inimigo.
+- **Game Over**: O jogo termina quando a nave colide com um inimigo ou o míssel disparado acerta uma resposta incorreta.
 
-- `core`: Main module with the application logic shared by all platforms.
-- `lwjgl3`: Primary desktop platform using LWJGL3; was called 'desktop' in older docs.
-- `html`: Web platform using GWT and WebGL. Supports only Java projects.
+## Tecnologias Utilizadas
 
-## Gradle
+- **LibGDX**: Framework utilizado para o desenvolvimento do jogo, que facilita a criação de jogos 2D e 3D.
+- **Java**: Linguagem de programação utilizada para desenvolver a lógica do jogo.
+- **BitmapFont**: Usado para exibir a pontuação e o texto de "Game Over" na tela.
 
-This project uses [Gradle](https://gradle.org/) to manage dependencies.
-The Gradle wrapper was included, so you can run Gradle tasks using `gradlew.bat` or `./gradlew` commands.
-Useful Gradle tasks and flags:
+## Desafios
+Os principais desafios no desenvolvimento foi se habituar inicialmente com a biblioteca libgdx, após estudar e verificar como funciona a biblioteca, foi usado uma playlist do youtube para inspiração de jogo (em anexo link), nessa ocasião foi usada as Funcionalidades do jogo desenvolvido em conjunto com a Playlist do youtube e acrescentado as Funcionalidades de Quizz, para virar um jogo de perguntas e respostas como proposto para a disciplina, foi também modificado os arquivos para trabalhar com classes e orientação a objetos, na playlist o instrutor gerava tudo em uma classe apenas, o que não se torna boa prática;
 
-- `--continue`: when using this flag, errors will not stop the tasks from running.
-- `--daemon`: thanks to this flag, Gradle daemon will be used to run chosen tasks.
-- `--offline`: when using this flag, cached dependency archives will be used.
-- `--refresh-dependencies`: this flag forces validation of all dependencies. Useful for snapshot versions.
-- `build`: builds sources and archives of every project.
-- `cleanEclipse`: removes Eclipse project data.
-- `cleanIdea`: removes IntelliJ project data.
-- `clean`: removes `build` folders, which store compiled classes and built archives.
-- `eclipse`: generates Eclipse project data.
-- `html:dist`: compiles GWT sources. The compiled application can be found at `html/build/dist`: you can use any HTTP server to deploy it.
-- `html:superDev`: compiles GWT sources and runs the application in SuperDev mode. It will be available at [localhost:8080/html](http://localhost:8080/html). Use only during development.
-- `idea`: generates IntelliJ project data.
-- `lwjgl3:jar`: builds application's runnable jar, which can be found at `lwjgl3/build/libs`.
-- `lwjgl3:run`: starts the application.
-- `test`: runs unit tests (if any).
+- Vale deixar claro que apesar de ter servido de inspiração, o jogo contém Funcionalidades implementadas totalmente do zero pelos alunos (Funcionalidades de quizz) e o código original do jogo apresentado no youtube foi totalmente modificado para trabalhar com orientação a objetos! Bem como as imagens usadas foram geradas pelos alunos;
 
-Note that most tasks that are not specific to a single project can be run with `name:` prefix, where the `name` should be replaced with the ID of a specific project.
-For example, `core:clean` removes `build` folder only from the `core` project.
+Segue o link da inspiração:
+https://www.youtube.com/watch?v=2bmvlwvnirk
+https://github.com/terroo/spaceship
+
+Ademais, utilizamos de tecnologias como ChatGpt para auxiliar na resolução de alguns erros recebidos durante a execução;
+
+
+## DIAGRAMA DE classes
+
+
+DIAGRAMA DE CLASSES ESTÁ PRESENTE EM .PDF NO REPOSITÓRIO:
+
+https://github.com/elc117/game-2024b-help-_podrao
