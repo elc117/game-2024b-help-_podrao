@@ -51,6 +51,22 @@ public class Enemy {
         return bounds;
     }
 
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public float getWidth() {
+        return bounds.getWidth();
+    }
+
+    public float getHeight() {
+      return bounds.getHeight();
+    }
+
     public void dispose() {
         texture.dispose();
     }

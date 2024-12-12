@@ -74,6 +74,7 @@ public class Paradigmas_Game extends ApplicationAdapter {
             enemy.draw(batch);
         }
 
+        // font.draw(batch, "Inimigos: " + enemies.size, 10, Gdx.graphics.getHeight() - 10);  // Debugger com Numero inimigos
         font.draw(batch, "Score: " + score, 20, Gdx.graphics.getHeight() - 20);
         // font.draw(batch, "Pergunta: " + currentQuestion.getQuestionText(), 20, Gdx.graphics.getHeight() - 50);
 
@@ -156,9 +157,15 @@ public class Paradigmas_Game extends ApplicationAdapter {
             Enemy enemy = iterator.next();
             enemy.update(deltaTime);
 
+            if (enemy.getX() + enemy.getWidth() < 0) {
+                iterator.remove();
+                continue; // Vai para o próximo inimigo
+            }
+
             if (missile != null && missile.isActive() && enemy.getBounds().overlaps(missile.getBounds())) {
                 if (enemy.getAnswer().equals(currentQuestion.getCorrectAnswer())) {
                     score++;
+                    changeQuestion();
                 } else {
                     isGameOver = true; // Perde o jogo se errar
                 }
@@ -171,6 +178,12 @@ public class Paradigmas_Game extends ApplicationAdapter {
             }
         }
     }
+
+    private void changeQuestion() {
+        currentQuestion = questions.random(); // Escolhe uma nova pergunta aleatória
+        // enemies.clear(); // Remove todos os inimigos existentes 
+    }
+    
 
     private void spawnEnemy() {
         float y = (float) Math.random() * (Gdx.graphics.getHeight() - 64);
