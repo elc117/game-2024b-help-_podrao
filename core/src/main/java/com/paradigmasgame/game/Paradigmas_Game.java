@@ -87,14 +87,84 @@ public class Paradigmas_Game extends ApplicationAdapter {
 
     private void loadQuestions() {
         questions = new Array<>();
-
+         // Perguntas sobre a UFSM
         Array<String> answers1 = new Array<>();
-        answers1.add("2"); answers1.add("3"); answers1.add("4");
-        questions.add(new Question("Quanto é 1 + 1?", answers1, "2"));
+        answers1.add("1960");
+        answers1.add("1970");
+        answers1.add("1980");
+        questions.add(new Question("Em que ano a UFSM foi fundada?", answers1, "1960"));
 
         Array<String> answers2 = new Array<>();
-        answers2.add("Azul"); answers2.add("Vermelho"); answers2.add("Amarelo");
-        questions.add(new Question("Qual é a cor do céu?", answers2, "Azul"));
+        answers2.add("José Mariano da Rocha Filho");
+        answers2.add("Oswaldo Aranha");
+        answers2.add("Getúlio Vargas");
+        questions.add(new Question("Qual é o nome do criador da UFSM?", answers2, "José Mariano da Rocha Filho"));
+
+        Array<String> answers3 = new Array<>();
+        answers3.add("Jardim Botânico");
+        answers3.add("Teatro São Pedro");
+        answers3.add("Catedral Metropolitana");
+        questions.add(new Question("Qual desses locais é uma atração dentro da UFSM?", answers3, "Jardim Botânico"));
+
+        // Perguntas sobre o Geoparque Quarta Colônia
+        Array<String> answers4 = new Array<>();
+        answers4.add("Geológico e cultural");
+        answers4.add("Moderno e arquitetônico");
+        answers4.add("Esportivo");
+        questions.add(new Question("O Geoparque Quarta Colônia é reconhecido por preservar qual tipo de patrimônio?", answers4, "Geológico e cultural"));
+
+        Array<String> answers5 = new Array<>();
+        answers5.add("Preservar fósseis e rochas");
+        answers5.add("Construir grandes monumentos");
+        answers5.add("Promover esportes aquáticos");
+        questions.add(new Question("Qual é um dos objetivos principais do Geoparque Quarta Colônia?", answers5, "Preservar fósseis e rochas"));
+
+        // Perguntas sobre o Distrito Criativo Centro-Gare
+        Array<String> answers6 = new Array<>();
+        answers6.add("Incentivo à economia criativa");
+        answers6.add("Zona industrial");
+        answers6.add("Polo esportivo");
+        questions.add(new Question("O que caracteriza o Distrito Criativo Centro-Gare em Santa Maria?", answers6, "Incentivo à economia criativa"));
+
+        Array<String> answers7 = new Array<>();
+        answers7.add("A Gare da antiga Estação Ferroviária");
+        answers7.add("O Theatro Treze de Maio");
+        answers7.add("A Biblioteca Pública Municipal");
+        questions.add(new Question("Qual é um marco histórico preservado no Distrito Criativo Centro-Gare?", answers7, "A Gare da antiga Estação Ferroviária"));
+
+        // Perguntas sobre o Geoparque Caçapava
+        Array<String> answers8 = new Array<>();
+        answers8.add("Morros Testemunhos");
+        answers8.add("Chapadas");
+        answers8.add("Cânions");
+        questions.add(new Question("O Geoparque Caçapava é conhecido por qual formação geológica?", answers8, "Morros Testemunhos"));
+
+        Array<String> answers9 = new Array<>();
+        answers9.add("Santa Maria");
+        answers9.add("Caçapava do Sul");
+        answers9.add("São Sepé");
+        questions.add(new Question("Qual é o principal município envolvido no Geoparque Caçapava?", answers9, "Caçapava do Sul"));
+
+        // Perguntas sobre o Jardim Botânico da UFSM
+        Array<String> answers10 = new Array<>();
+        answers10.add("Conservação da biodiversidade");
+        answers10.add("Educação física e esportes");
+        answers10.add("Desenvolvimento industrial");
+        questions.add(new Question("O Jardim Botânico da UFSM tem como objetivo principal:", answers10, "Conservação da biodiversidade"));
+
+        Array<String> answers11 = new Array<>();
+        answers11.add("Trilhas ecológicas");
+        answers11.add("Esculturas históricas");
+        answers11.add("Parques aquáticos");
+        questions.add(new Question("Qual destes elementos é encontrado no Jardim Botânico da UFSM?", answers11, "Trilhas ecológicas"));
+
+        Array<String> answers12 = new Array<>();
+        answers12.add("2"); answers12.add("3"); answers12.add("4");
+        questions.add(new Question("Quanto é 1 + 1?", answers12, "2"));
+
+        Array<String> answers13 = new Array<>();
+        answers13.add("Azul"); answers13.add("Vermelho"); answers13.add("Amarelo");
+        questions.add(new Question("Qual é a cor do céu?", answers13, "Azul"));
 
         currentQuestion = questions.random(); // Escolhe uma pergunta aleatória
     }
