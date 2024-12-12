@@ -159,7 +159,6 @@ public class Paradigmas_Game extends ApplicationAdapter {
             if (missile != null && missile.isActive() && enemy.getBounds().overlaps(missile.getBounds())) {
                 if (enemy.getAnswer().equals(currentQuestion.getCorrectAnswer())) {
                     score++;
-                    changeQuestion();
                 } else {
                     isGameOver = true; // Perde o jogo se errar
                 }
@@ -170,17 +169,6 @@ public class Paradigmas_Game extends ApplicationAdapter {
             if (enemy.getBounds().overlaps(nave.getBounds())) {
                 isGameOver = true;
             }
-        }
-    }
-
-    private void changeQuestion() {
-        if (questions.size > 0) {
-            currentQuestion = questions.random(); // Escolhe uma nova pergunta aleatória
-            enemies.clear(); // Remove todos os inimigos existentes
-            spawnEnemiesForQuestion(); // Gera novos inimigos para a nova pergunta
-        } else {
-            // Se todas as perguntas foram usadas, reinicia o jogo ou mostra uma mensagem de vitória
-            isGameOver = true; // Ou implemente lógica de vitória aqui
         }
     }
 
