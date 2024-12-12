@@ -20,6 +20,7 @@ import java.util.Iterator;
 
 public class Paradigmas_Game extends ApplicationAdapter {
     private SpriteBatch batch;
+
     private Texture background;
     private Nave nave;
     private Missile missile;
@@ -35,9 +36,11 @@ public class Paradigmas_Game extends ApplicationAdapter {
     @Override
     public void create() {
         batch = new SpriteBatch();
+
         background = new Texture("planetario.png");
         nave = new Nave("podrao.png", 100, 100);
         missile = null;
+
         enemies = new Array<>();
         enemySpawnTimer = 0;
         font = new BitmapFont();
@@ -46,6 +49,7 @@ public class Paradigmas_Game extends ApplicationAdapter {
         isGameOver = false;
         score = 0;
         loadQuestions();
+
     }
 
     @Override
@@ -62,9 +66,11 @@ public class Paradigmas_Game extends ApplicationAdapter {
         batch.draw(background, 0, 0);
         nave.draw(batch);
 
+
         if (currentQuestion != null) {
             font.draw(batch, currentQuestion.getQuestionText(), 20, Gdx.graphics.getHeight() - 50);
         }
+
 
         if (missile != null) {
             missile.draw(batch);
@@ -83,6 +89,7 @@ public class Paradigmas_Game extends ApplicationAdapter {
         }
 
         batch.end();
+
     }
 
     private void loadQuestions() {
@@ -165,6 +172,23 @@ public class Paradigmas_Game extends ApplicationAdapter {
         Array<String> answers13 = new Array<>();
         answers13.add("Azul"); answers13.add("Vermelho"); answers13.add("Amarelo");
         questions.add(new Question("Qual é a cor do céu?", answers13, "Azul"));
+     
+        Array<String> answers14 = new Array<>();
+        answers14.add("Porto Alegre"); answers14.add("Marte"); answers14.add("Santa Maria"); answers14.add("Russia");
+        questions.add(new Question("Onde está localizado o campus principal da UFSM?", answers14, "Santa Maria"));
+        
+        Array<String> answers15 = new Array<>();
+        answers15.add("Cachorro"); answers15.add("Fedorento"); answers15.add("Podrao"); answers15.add("Auau");
+        questions.add(new Question("Qual o nome do mascote visto perambulando pela UFSM??", answers15, "Podrao"));
+        
+        Array<String> answers16 = new Array<>();
+        answers16.add("Salsichão"); answers16.add("Fricassê"); answers16.add("Bife Acebolado"); answers16.add("Guizado");
+        questions.add(new Question("Qual a melhor proteína do RU???", answers16, "Salsichão"));
+      
+        Array<String> answers17 = new Array<>();
+        answers17.add("Bosque"); answers17.add("Incubadora"); answers17.add("CT"); answers17.add("Planetário");
+        questions.add(new Question("Qual o nome do monumento que Podrao está travando sua batalha?", answers17, "Planetário"));
+       
 
         currentQuestion = questions.random(); // Escolhe uma pergunta aleatória
     }
@@ -189,12 +213,15 @@ public class Paradigmas_Game extends ApplicationAdapter {
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             nave.moveDown();
         }
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             if (missile == null || !missile.isActive()) {
                 missile = new Missile("missile.png", nave.getX(), nave.getY());
+
             }
         }
     }
+
 
     private void restartGame() {
         // Limpa os inimigos
@@ -208,12 +235,14 @@ public class Paradigmas_Game extends ApplicationAdapter {
         isGameOver = false;
     }
 
+
     private void updateGame(float deltaTime) {
         enemySpawnTimer += deltaTime;
         if (enemySpawnTimer > 1) {
             spawnEnemy();
             enemySpawnTimer = 0;
         }
+
 
         if (missile != null) {
             missile.update(deltaTime);
@@ -226,6 +255,7 @@ public class Paradigmas_Game extends ApplicationAdapter {
         while (iterator.hasNext()) {
             Enemy enemy = iterator.next();
             enemy.update(deltaTime);
+
 
             if (enemy.getX() + enemy.getWidth() < 0) {
                 iterator.remove();
@@ -249,9 +279,11 @@ public class Paradigmas_Game extends ApplicationAdapter {
         }
     }
 
+
     private void changeQuestion() {
         currentQuestion = questions.random(); // Escolhe uma nova pergunta aleatória
         // enemies.clear(); // Remove todos os inimigos existentes 
+
     }
     
 
